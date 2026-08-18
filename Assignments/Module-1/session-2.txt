@@ -1,0 +1,19 @@
+Q.1 What are the three main layers of software architecture? Write one line about each.
+   Presentation layer: Handles what the user sees and interacts with, such as screens and buttons.
+   Business logic layer: Contains the rules and processes that make the application work.
+   Data layer: Stores, retrieves, and manages the application's data in databases.
+
+Q.2 Define client and server in your own words with one real-life example.
+   Client: A device or application that requests a service or information from another computer.
+   Server: A computer or program that receives requests from clients and provides data or services.
+   Real-life example: When you open a website on your phone, your phone/browser is the client, and the website's server sends the requested web page to it.
+
+Q.3 Write 2 differences each between desktop apps, web apps, and mobile apps.
+   Desktop app :-	Installed directly on a computer.	Usually designed for Windows, macOS, or Linux.
+   Web app :-	Runs through a web browser.	Usually does not require installation and can work across different devices.
+   Mobile app :-	Designed for smartphones/tablets.	Usually downloaded from an app store and optimized for touchscreens.
+
+Q.4 Name any 3 databases and mention whether each is SQL or NoSQL.
+  i) MySQL — SQL
+  ii) PostgreSQL — SQL
+  iii) MongoDB — NoSQL
