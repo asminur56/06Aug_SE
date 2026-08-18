@@ -1,0 +1,12 @@
+Q.1 Write the full form and one-line use of: HTTP, HTTPS, FTP, SMTP.
+    HTTP — HyperText Transfer Protocol: Used to transfer web pages and data between a client and a web server.
+    HTTPS — HyperText Transfer Protocol Secure: Used to securely transfer data between a client and a web server using encryption.
+    FTP — File Transfer Protocol: Used to upload and download files between computers over a network.
+    SMTP — Simple Mail Transfer Protocol: Used to send emails from a mail client to a mail server and between mail servers.
+
+Q.2 What is the difference between IPv4 and IPv6?
+    IPv4 uses 32-bit addresses, such as 192.168.1.1, while IPv6 uses 128-bit addresses, such as 2001:db8::1.
+    IPv6 provides a much larger address space and was developed to overcome the shortage of IPv4 addresses.
+
+Q.3 Run nslookup google.com on your system and write down the IP address you get.
+     
