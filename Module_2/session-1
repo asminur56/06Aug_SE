@@ -1,0 +1,53 @@
+1). Write a short paragraph in your own words defining what a 'program' is and give one real-life example from any app you use daily (like Instagram, Zomato, or Paytm).
+->> A program is a set of instructions written in a programming language that tells a computer or app what to do. For example, in Instagram, a program helps display your feed, upload photos, like posts, and send messages when you tap different buttons.
+
+2). List three popular programming languages you have heard of, and for each, mention whether it is usually compiled, interpreted, or can be both.<br><br><em><strong>Hint:</strong> Think of languages like Java, Python, and JavaScript.</em>
+->> Java = Compiled
+    Python = Interpreted
+    JavaScript = Both (compiled and interpreted techniques are used).
+
+3). Draw a flowchart (on paper or using any online tool) for the process of booking a movie ticket on BookMyShow, starting from opening the app to receiving the booking confirmation.
+->>  
+Start
+↓
+Open BookMyShow app
+↓
+Select city/location
+↓
+Choose a movie
+↓
+Select date and showtime
+↓
+Select number of tickets/seats
+↓
+Are seats available?
+→ No: Choose another show/seats
+→ Yes: Continue
+↓
+Enter/confirm booking details
+↓
+Make payment
+↓
+Payment successful?
+→ No: Try payment again
+→ Yes: Continue
+↓
+Receive booking confirmation/ticket
+↓
+End
+
+4). Write down the steps (as an algorithm, using simple numbered instructions) for ordering food on Swiggy — from opening the app to completing payment.
+->>
+1. Open the Swiggy app.
+2. Log in or create an account.
+3. Enter or confirm your delivery address.
+4. Search for a restaurant or choose one from the list.
+5. Select the food items you want to order.
+6. Add the selected items to the cart.
+7. Review the items, quantity, and total price.
+8. Proceed to checkout.
+9. Confirm the delivery address and order details.
+10. Select a payment method.
+11. Make the payment.
+12. Wait for the payment to be completed successfully.
+13. Receive the order confirmation.
