@@ -1,0 +1,94 @@
+1. Calculate Total
+#include <stdio.h>
+
+float calculateTotal(float itemPrice, int quantity) 
+{
+    return itemPrice * quantity;
+}
+
+int main()
+{
+    printf("Total Bill = %.2f\n", calculateTotal(100.50, 3));
+    return 0;
+}
+
+
+=============================================
+2. Flipkart-Style Discount Calculator
+
+#include <stdio.h>
+
+float calculateFinalPrice(float price, float discount, int isMember) 
+{
+    float finalPrice;
+
+    finalPrice = price - (price * discount / 100);
+
+    if (isMember)
+{
+        finalPrice = finalPrice - (finalPrice * 5 / 100);
+    }
+
+    return finalPrice;
+}
+
+int main() 
+{
+    printf("Final Price = %.2f\n",
+           calculateFinalPrice(1000, 20, 1));
+    return 0;
+}
+
+
+=================================================================
+3. Check Eligibility for Offer
+#include <stdio.h>
+
+int isEligibleForOffer(int age, float orderValue)
+{
+    return (age >= 18 && orderValue > 500);
+}
+
+int main()
+{
+    printf("%d\n", isEligibleForOffer(20, 600));
+    return 0;
+}
+
+
+==================================================================
+4. Check if a Post is Trending
+#include <stdio.h>
+
+int main()
+{
+    int likes = 1200;
+    int comments = 150;
+    int shares = 60;
+
+    int trending = (likes >= 1000) || (comments > 200 && shares >= 50);
+
+    printf("Trending: %s\n", trending ? "Yes" : "No");
+
+    return 0;
+}
+
+
+========================================================================
+5. Pre-Increment vs Post-Increment
+#include <stdio.h>
+
+int main() 
+{
+    int followerCount = 100;
+
+    printf("Before: %d\n", followerCount);
+
+    printf("Post-increment: %d\n", followerCount++);
+    printf("After post-increment: %d\n", followerCount);
+
+    printf("Pre-increment: %d\n", ++followerCount);
+    printf("After pre-increment: %d\n", followerCount);
+
+    return 0;
+}
