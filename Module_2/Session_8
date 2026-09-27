@@ -1,0 +1,148 @@
+1. getUserInitials() — Get initials in uppercase:-
+
+#include <stdio.h>
+#include <ctype.h>
+
+void getUserInitials(char name[], char initials[]) {
+    int i = 0, j = 0;
+
+    // First letter
+    while (name[i] == ' ')
+        i++;
+
+    initials[j++] = toupper(name[i]);
+
+    // Find the first letter after a space
+    while (name[i] != '\0') {
+        if (name[i] == ' ' && name[i + 1] != '\0') {
+            initials[j++] = toupper(name[i + 1]);
+            break;
+        }
+        i++;
+    }
+
+    initials[j] = '\0';
+}
+
+int main() {
+    char name[] = "Virat Kohli";
+    char initials[10];
+
+    getUserInitials(name, initials);
+
+    printf("Initials: %s\n", initials);
+
+    return 0;
+}
+
+================================================================================
+2. addToCart() — Add a product to an array:-
+#include <stdio.h>
+#include <string.h>
+
+void addToCart(char cart[][50], int *count, char product[]) {
+    strcpy(cart[*count], product);
+    (*count)++;
+
+    printf("\nUpdated Cart:\n");
+
+    for (int i = 0; i < *count; i++) {
+        printf("%d. %s\n", i + 1, cart[i]);
+    }
+}
+
+int main() {
+    char cart[10][50];
+    int count = 0;
+
+    addToCart(cart, &count, "Laptop");
+    addToCart(cart, &count, "Mouse");
+    addToCart(cart, &count, "Headphones");
+
+    return 0;
+}
+
+====================================================================================
+3. Pass-by-value vs pass-by-reference:-
+
+#include <stdio.h>
+
+// Pass-by-value
+void increaseFollowersByValue(int followers) {
+    followers += 1000;
+    printf("Inside value function: %d\n", followers);
+}
+
+// Pass-by-reference using pointer
+void increaseFollowersByReference(int *followers) {
+    *followers += 1000;
+    printf("Inside reference function: %d\n", *followers);
+}
+
+int main() {
+    int followers = 5000;
+
+    printf("Original followers: %d\n", followers);
+
+    increaseFollowersByValue(followers);
+    printf("After pass-by-value: %d\n", followers);
+
+    increaseFollowersByReference(&followers);
+    printf("After pass-by-reference: %d\n", followers);
+
+    return 0;
+}
+
+
+=============================================================================
+4. formatPrice() — Format rupee prices:-
+#include <stdio.h>
+
+void formatPrice(int price, char result[]) {
+    if (price >= 1000) {
+        sprintf(result, "₹%d,%03d", price / 1000, price % 1000);
+    } else {
+        sprintf(result, "₹%d", price);
+    }
+}
+
+int main() {
+    char price1[50], price2[50], price3[50];
+
+    formatPrice(1599, price1);
+    formatPrice(24999, price2);
+    formatPrice(799, price3);
+
+    printf("Laptop: %s\n", price1);
+    printf("Headphones: %s\n", price2);
+    printf("Mouse: %s\n", price3);
+
+    return 0;
+}
+
+====================================================================================
+5. 
+#include <stdio.h>
+#include <ctype.h>
+
+void capitalizeFirst(char str[]) {
+    if (str[0] != '\0') {
+        str[0] = toupper(str[0]);
+    }
+}
+
+int main() {
+    char product[] = "laptop";
+    char username[] = "virat";
+    char city[] = "mumbai";
+
+    capitalizeFirst(product);
+    capitalizeFirst(username);
+    capitalizeFirst(city);
+
+    printf("Product: %s\n", product);
+    printf("Username: %s\n", username);
+    printf("City: %s\n", city);
+
+    return 0;
+}
