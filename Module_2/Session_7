@@ -1,0 +1,80 @@
+1. 5×5 Emoji Grid
+#include <stdio.h>
+
+int main() {
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            printf("📷 ");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+==================================================
+2. Number Triangle
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+==================================================================
+3. 6-Row Star Pyramid
+#include <stdio.h>
+
+int main() {
+    for (int i = 1; i <= 6; i++) {
+        for (int j = 1; j <= 6 - i; j++)
+            printf(" ");
+
+        for (int j = 1; j <= 2 * i - 1; j++)
+            printf("*");
+
+        printf("\n");
+    }
+    return 0;
+}
+
+====================================================================
+4. 4×4 Alternating 0s and 1s
+#include <stdio.h>
+
+int main() {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            printf("%d ", (i + j) % 2);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+===================================================
+5. Pyramid with User Input
+#include <stdio.h>
+
+int main() {
+    int row;
+
+    printf("Enter number of rows: ");
+    scanf("%d", &row);
+
+    for (int i = 1; i <= row; i++) {
+        for (int j = 1; j <= row - i; j++)
+            printf(" ");
+
+        for (int j = 1; j <= 2 * i - 1; j++)
+            printf("*");
+
+        printf("\n");
+    }
+
+    return 0;
+}
