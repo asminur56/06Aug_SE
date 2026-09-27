@@ -1,0 +1,88 @@
+1. Find the length of "Tum Hi Ho" using strlen()
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char songTitle[] = "Tum Hi Ho";
+
+    printf("Song: %s\n", songTitle);
+    printf("Length: %zu\n", strlen(songTitle));
+
+    return 0;
+}
+
+-----------------
+Output:
+Song: Tum Hi Ho
+Length: 9
+
+==========================================
+2. Compare two usernames using strcmp()
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char username1[50];
+    char username2[50];
+
+    printf("Enter first username: ");
+    scanf("%49s", username1);
+
+    printf("Enter second username: ");
+    scanf("%49s", username2);
+
+    if (strcmp(username1, username2) == 0) {
+        printf("The usernames are the same.\n");
+    } else {
+        printf("The usernames are different.\n");
+    }
+
+    return 0;
+}
+
+==================================================
+3. Copy "Flipkart" using strcpy()
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char shoppingApp[50];
+
+    strcpy(shoppingApp, "Flipkart");
+
+    printf("Shopping App: %s\n", shoppingApp);
+
+    return 0;
+}
+
+-----------------------------
+Output:
+Shopping App: Flipkart
+
+==================================================
+4. Generate a username using the first 5 characters
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char fullName[100];
+    char username[6];
+
+    printf("Enter your full name: ");
+    fgets(fullName, sizeof(fullName), stdin);
+
+    // Remove newline from fgets()
+    fullName[strcspn(fullName, "\n")] = '\0';
+
+    if (strlen(fullName) <= 5) {
+        strcpy(username, fullName);
+    } else {
+        strncpy(username, fullName, 5);
+        username[5] = '\0';
+    }
+
+    printf("Generated username: %s\n", username);
+
+    return 0;
+}
