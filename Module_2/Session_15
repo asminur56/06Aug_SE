@@ -1,0 +1,237 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define DAYS 7
+#define FILE_NAME "music_log.txt"
+
+// Function prototypes
+void logListeningMinutes(int minutes[]);
+void viewSummary(int minutes[]);
+void saveToFile(int minutes[]);
+void loadFromFile(int minutes[]);
+void weeklyReport();
+void resetData(int minutes[]);
+
+int main() {
+    int minutes[DAYS] = {0};
+    int choice;
+
+    // Load previously saved data when the program starts
+    loadFromFile(minutes);
+
+    do {
+        printf("\n====================================\n");
+        printf("       MUSIC LISTENING LOGGER\n");
+        printf("====================================\n");
+        printf("1. Log listening minutes\n");
+        printf("2. View weekly summary\n");
+        printf("3. Generate weekly report\n");
+        printf("4. Reset weekly data\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                logListeningMinutes(minutes);
+                break;
+
+            case 2:
+                viewSummary(minutes);
+                break;
+
+            case 3:
+                weeklyReport();
+                break;
+
+            case 4:
+                resetData(minutes);
+                break;
+
+            case 5:
+                printf("Thank you for using Music Listening Logger!\n");
+                break;
+
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
+
+/*
+ * Function to enter listening minutes
+ * for each day of the week.
+ */
+void logListeningMinutes(int minutes[]) {
+    char *days[DAYS] = {
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    };
+
+    printf("\nEnter your listening minutes:\n");
+
+    for (int i = 0; i < DAYS; i++) {
+        printf("%s: ", days[i]);
+        scanf("%d", &minutes[i]);
+
+        // Make sure negative values are not accepted
+        if (minutes[i] < 0) {
+            printf("Minutes cannot be negative. Setting to 0.\n");
+            minutes[i] = 0;
+        }
+    }
+
+    // Save the new data to the file
+    saveToFile(minutes);
+
+    printf("\nListening data saved successfully!\n");
+}
+
+/*
+ * Display the listening minutes stored
+ * in the array.
+ */
+void viewSummary(int minutes[]) {
+    char *days[DAYS] = {
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    };
+
+    printf("\n--------- WEEKLY SUMMARY ---------\n");
+
+    for (int i = 0; i < DAYS; i++) {
+        printf("%-10s : %d minutes\n", days[i], minutes[i]);
+    }
+}
+
+/*
+ * Save all 7 days of listening data
+ * into music_log.txt.
+ */
+void saveToFile(int minutes[]) {
+    FILE *file = fopen(FILE_NAME, "w");
+
+    if (file == NULL) {
+        printf("Error: Could not open file for writing.\n");
+        return;
+    }
+
+    for (int i = 0; i < DAYS; i++) {
+        fprintf(file, "%d\n", minutes[i]);
+    }
+
+    fclose(file);
+}
+
+/*
+ * Load previously saved data from
+ * music_log.txt into the array.
+ */
+void loadFromFile(int minutes[]) {
+    FILE *file = fopen(FILE_NAME, "r");
+
+    // If the file does not exist, start with zeros
+    if (file == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < DAYS; i++) {
+        if (fscanf(file, "%d", &minutes[i]) != 1) {
+            minutes[i] = 0;
+        }
+    }
+
+    fclose(file);
+}
+
+/*
+ * Read the saved file and calculate:
+ * - Total listening minutes
+ * - Average listening minutes
+ * - Highest listening minutes
+ */
+void weeklyReport() {
+    FILE *file = fopen(FILE_NAME, "r");
+    int minutes[DAYS];
+    int total = 0;
+    int highest = 0;
+    float average;
+
+    if (file == NULL) {
+        printf("\nNo saved music data found.\n");
+        return;
+    }
+
+    // Read data from the file
+    for (int i = 0; i < DAYS; i++) {
+        if (fscanf(file, "%d", &minutes[i]) != 1) {
+            minutes[i] = 0;
+        }
+    }
+
+    fclose(file);
+
+    // Calculate total and highest value
+    for (int i = 0; i < DAYS; i++) {
+        total += minutes[i];
+
+        if (minutes[i] > highest) {
+            highest = minutes[i];
+        }
+    }
+
+    // Calculate average
+    average = (float)total / DAYS;
+
+    printf("\n========== WEEKLY REPORT ==========\n");
+    printf("Total listening   : %d minutes\n", total);
+    printf("Average listening : %.2f minutes/day\n", average);
+    printf("Highest listening : %d minutes\n", highest);
+}
+
+/*
+ * Reset the array and clear the contents
+ * of music_log.txt after confirmation.
+ */
+void resetData(int minutes[]) {
+    char confirmation;
+
+    printf("\nAre you sure you want to reset your weekly data? (y/n): ");
+    scanf(" %c", &confirmation);
+
+    if (confirmation == 'y' || confirmation == 'Y') {
+
+        // Clear the array
+        for (int i = 0; i < DAYS; i++) {
+            minutes[i] = 0;
+        }
+
+        // Open the file in "w" mode to clear its contents
+        FILE *file = fopen(FILE_NAME, "w");
+
+        if (file == NULL) {
+            printf("Error: Could not clear the file.\n");
+            return;
+        }
+
+        fclose(file);
+
+        printf("Weekly data has been reset successfully.\n");
+
+    } else {
+        printf("Reset cancelled.\n");
+    }
+}
