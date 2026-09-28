@@ -1,0 +1,112 @@
+1. Create playlist.txt and write 3 songs using w
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+
+    file = fopen("playlist.txt", "w");
+
+    if (file == NULL) {
+        printf("Unable to create file.\n");
+        return 1;
+    }
+
+    fprintf(file, "Perfect\n");
+    fprintf(file, "Shape of You\n");
+    fprintf(file, "Love Story\n");
+
+    fclose(file);
+
+    printf("3 songs written to playlist.txt successfully.\n");
+
+    return 0;
+}
+
+==========================================================================
+2. Read playlist.txt using r
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+    char song[100];
+
+    file = fopen("playlist.txt", "r");
+
+    if (file == NULL) {
+        printf("Unable to open file.\n");
+        return 1;
+    }
+
+    printf("Songs in playlist:\n");
+
+    while (fgets(song, sizeof(song), file) != NULL) {
+        printf("%s", song);
+    }
+
+    fclose(file);
+
+    return 0;
+}
+
+=============================================================================
+3. Add 2 more songs using append mode "a"
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+
+    file = fopen("playlist.txt", "a");
+
+    if (file == NULL) {
+        printf("Unable to open file.\n");
+        return 1;
+    }
+
+    fprintf(file, "Believer\n");
+    fprintf(file, "Someone You Loved\n");
+
+    fclose(file);
+
+    printf("2 more songs added successfully.\n");
+
+    return 0;
+}
+
+=========================================================================
+4. Print only songs containing "love" — case-insensitive
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    FILE *file;
+    char song[100];
+    char lowerSong[100];
+
+    file = fopen("playlist.txt", "r");
+
+    if (file == NULL) {
+        printf("Unable to open file.\n");
+        return 1;
+    }
+
+    printf("Songs containing 'love':\n");
+
+    while (fgets(song, sizeof(song), file) != NULL) {
+
+        // Convert song name to lowercase
+        for (int i = 0; song[i] != '\0'; i++) {
+            lowerSong[i] = tolower((unsigned char)song[i]);
+        }
+        lowerSong[strlen(song)] = '\0';
+
+        // Search for "love"
+        if (strstr(lowerSong, "love") != NULL) {
+            printf("%s", song);
+        }
+    }
+
+    fclose(file);
+
+    return 0;
+}
